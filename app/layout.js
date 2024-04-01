@@ -1,6 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { ClerkProvider } from "@clerk/nextjs";
+import Header from "./_components/Header";
+import Provider from "./Provider";
+import '@smastrom/react-rating/style.css'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -10,8 +13,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
+     
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Provider>{children}</Provider>
+        </body>
     </html>
+ 
+    </ClerkProvider>
   );
 }
